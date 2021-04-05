@@ -3,10 +3,10 @@ import { StyleSheet, Image } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import Screen from '../CSALT/app/components/Screen';
-import AppTextInput from '../CSALT/app/components/AppTextInput';
-import AppButton from '../CSALT/app/components/AppButton';
-import AppText from '../CSALT/app/components/AppText';
+import Screen from './app/components/Screen';
+import AppTextInput from './app/components/AppTextInput';
+import AppButton from'./app/components/AppButton';
+import AppText from './app/components/AppText';
 
 //being defined outside of function component so that this object is not redefined evertime the object is rerendered.
 const validationSchema = Yup.object().shape({
@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
 function LoginScreen(props) {
     return (
        <Screen style={styles.container}>
-           <Image style={styles.logo} source={require("../CSALT/assets/ccsu.png")} />
+           <Image style={styles.logo} source={require("./assets/ccsu.png")} />
            
            <Formik
             initialValues={{ email: '', password: ''}}

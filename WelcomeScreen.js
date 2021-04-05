@@ -1,14 +1,14 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View , Text, Image,TouchableOpacity,Button} from 'react-native';
 
-import colors from '../CSALT/app/config/colors';
+import colors from './app/config/colors';
 import AppButton from './app/components/AppButton';
 
 function WelcomeScreen(props) {
     return (
         <ImageBackground 
             style={styles.background}
-            source={require("../CSALT/assets/stockImage1.jpg")}>
+            source={require("./assets/stockImage1.jpg")}>
             
            
             <View style={styles.logoContainer}>
