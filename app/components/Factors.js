@@ -149,6 +149,7 @@ const Factors = () => {
   console.log(factorValues);
   if (selected) {
     return (
+    <div className='Factors'>
       <View style={styles.container}>
         <Text style={{ width: "100%", textAlign: "center" }}>{selected}</Text>
 
@@ -191,6 +192,7 @@ const Factors = () => {
           </View>
         </View>
       </View>
+      </div>
     );
   } else {
     return (

@@ -20,18 +20,19 @@ export default function App(){
            <Switch>
             <Route path='/WelcomeScreen' exact component={WelcomeScreen}/>
             <Route path='/LoginScreen' exact component={LoginScreen}/>
+            <Route path='/app/components/Factors' exact component={Factors}/>
           </Switch> 
       
-       <SafeAreaView>
-       <ScrollView>
-       <View style={styles.container}>
+       {/* <SafeAreaView> */}
+       {/* <ScrollView> */}
+       {/* <View style={styles.container}> */}
          {/* <Text>Wellness App!</Text> */}
-         <Factors/>
+         {/* <Factors/> */}
          {/* <Button color="red" title="test" onPress={ev => {Alert.alert('You clicked me')}}/> */}
-         <StatusBar style="auto" />
-       </View>
-       </ScrollView>
-       </SafeAreaView>
+         {/* <StatusBar style="auto" /> */}
+       {/* </View> */}
+       {/* </ScrollView> */}
+       {/* </SafeAreaView> */}
        </Router>
    
  );
