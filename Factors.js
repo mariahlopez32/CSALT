@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Slider from "@react-native-community/slider";
-import Circle from "./Circle";
+import Circle from "./app/components/Circle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PieChart } from "react-native-svg-charts";
 import "react-native-svg";

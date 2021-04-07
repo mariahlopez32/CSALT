@@ -1,7 +1,7 @@
   
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import Factors from '../components/Factors'
+import Factors from './Factors'
 const styles = StyleSheet.create({
   container: {
     flex: 1,

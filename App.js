@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 // import React from "react";
 import Sidebar from "react-sidebar";
 import Navbar from './app/components/Navbar';
-import Factors from './app/components/Factors';
+import Factors from './Factors';
 // import { Router, Switch } from 'react-router';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import './App.css'
@@ -20,19 +20,8 @@ export default function App(){
            <Switch>
             <Route path='/WelcomeScreen' exact component={WelcomeScreen}/>
             <Route path='/LoginScreen' exact component={LoginScreen}/>
-            <Route path='/app/components/Factors' exact component={Factors}/>
+            <Route path='/Factors' exact component={Factors}/>
           </Switch> 
-      
-       {/* <SafeAreaView> */}
-       {/* <ScrollView> */}
-       {/* <View style={styles.container}> */}
-         {/* <Text>Wellness App!</Text> */}
-         {/* <Factors/> */}
-         {/* <Button color="red" title="test" onPress={ev => {Alert.alert('You clicked me')}}/> */}
-         {/* <StatusBar style="auto" /> */}
-       {/* </View> */}
-       {/* </ScrollView> */}
-       {/* </SafeAreaView> */}
        </Router>
    
  );
