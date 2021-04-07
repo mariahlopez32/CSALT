@@ -17,6 +17,7 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen(props) {
     return (
+      <div className='Login'>
        <Screen style={styles.container}>
            <Image style={styles.logo} source={require("./assets/ccsu.png")} />
            
@@ -52,6 +53,7 @@ function LoginScreen(props) {
             )}
            </Formik>   
        </Screen>
+       </div>
     );
 }
 
