@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {  StyleSheet, Text, View, Button, Alert, ScrollView, SafeAreaView } from 'react-native';
 import LoginScreen from './LoginScreen';
 import WelcomeScreen from './WelcomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 // import React from "react";
 import Sidebar from "react-sidebar";
 import Navbar from './app/components/Navbar';
+import Factors from './app/components/Factors';
 // import { Router, Switch } from 'react-router';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import './App.css'
@@ -20,7 +21,18 @@ export default function App(){
             <Route path='/WelcomeScreen' exact component={WelcomeScreen}/>
             <Route path='/LoginScreen' exact component={LoginScreen}/>
           </Switch> 
-      </Router>
+      
+       <SafeAreaView>
+       <ScrollView>
+       <View style={styles.container}>
+         {/* <Text>Wellness App!</Text> */}
+         <Factors/>
+         {/* <Button color="red" title="test" onPress={ev => {Alert.alert('You clicked me')}}/> */}
+         <StatusBar style="auto" />
+       </View>
+       </ScrollView>
+       </SafeAreaView>
+       </Router>
    
  );
 }
