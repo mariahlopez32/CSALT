@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import Screen from './app/components/Screen';
 import AppTextInput from './app/components/AppTextInput';
 import AppButton from'./app/components/AppButton';
-import AppText from './app/components/AppText';
+import ErrorMessage from './app/components/ErrorMessage';
 
 //being defined outside of function component so that this object is not redefined evertime the object is rerendered.
 const validationSchema = Yup.object().shape({
@@ -17,7 +17,7 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen(props) {
     return (
-      <div className='Login'>
+      
        <Screen style={styles.container}>
            <Image style={styles.logo} source={require("./assets/ccsu.png")} />
            
@@ -26,34 +26,37 @@ function LoginScreen(props) {
             onSubmit={values => console.log(values)}
             validationSchema={validationSchema}
            >
-            {({ handleChange, handleSubmit, errors }) => (
+            {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
               <>
+              
                 <AppTextInput
                   autoCapitalize="none"
                   autoCorrect={false} 
                   icon="email"
                   keyboardType="email-address"
+                  onBlur={() => setFieldTouched("email")}
                   onChangeText={handleChange("email")}
                   placeholder="Email"
                   textContentType="emailAddress"
               />
-                <AppText style={{ color: "red" }}>{errors.email}</AppText>
+                <ErrorMessage error={errors.email} visible={touched.email} />
                 <AppTextInput 
                   autoCapitalize="none"
                   autoCorrect={false}
                   icon="lock"
+                  onBlur={() => setFieldTouched("password")}
                   onChangeText={handleChange("password")}
                   placeholder="Password"
                   secureTextEntry
                   textContentType="password"
               />
-                <AppText style={{ color: "red" }}>{errors.password}</AppText>
+                <ErrorMessage error={errors.password} visible={touched.password} />
                 <AppButton title="Login" onPress={handleSubmit}/>
               </>
             )}
            </Formik>   
        </Screen>
-       </div>
+       
     );
 }
 

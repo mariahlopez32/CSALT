@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    paddingTop: 100
   },
   factorsContainer: {
     flexDirection: "row",
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
+    
   },
   modalView: {
     margin: 20,
@@ -74,10 +76,11 @@ const styles = StyleSheet.create({
   circleShape: {
     width: 150,
     height: 150,
-    borderRadius: "50%",
+    borderRadius: 50,
     backgroundColor: "#9c88ff",
     justifyContent: "center",
     alignItems: "center",
+    
   },
   circleText: {
     alignSelf: "center",
@@ -149,7 +152,7 @@ const Factors = () => {
   console.log(factorValues);
   if (selected) {
     return (
-    <div className='Factors'>
+   
       <View style={styles.container}>
         <Text style={{ width: "100%", textAlign: "center" }}>{selected}</Text>
 
@@ -192,7 +195,7 @@ const Factors = () => {
           </View>
         </View>
       </View>
-      </div>
+    
     );
   } else {
     return (

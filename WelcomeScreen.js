@@ -6,7 +6,7 @@ import AppButton from './app/components/AppButton';
 
 function WelcomeScreen(props) {
     return (
-        <div className='WelcomeScreen'>
+        
         <ImageBackground 
             style={styles.background}
             source={require("./assets/stockImage1.jpg")}>
@@ -22,7 +22,7 @@ function WelcomeScreen(props) {
             </View>
             
          </ImageBackground> 
-         </div>
+        
     );
 }
 
