@@ -32,7 +32,8 @@
     "react-native-web": "^0.15.6",
     "react-router-dom": "^5.2.0",
     "react-sidebar": "^3.0.2",
-    "yup": "^0.28.5"
+    "yup": "^0.28.5",
+    "expo-blur": "~8.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

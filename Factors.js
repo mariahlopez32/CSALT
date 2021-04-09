@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   },
   labelUnwell: {
     flex: 1,
+    marginBottom: 250,
   },
   centeredView: {
     flex: 1,
@@ -57,6 +58,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
+    marginBottom: 10
   },
   buttonOpen: {
     backgroundColor: "#F194FF",

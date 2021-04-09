@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
 });
 
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
     return (
       
        <Screen style={styles.container}>
@@ -51,7 +51,7 @@ function LoginScreen(props) {
                   textContentType="password"
               />
                 <ErrorMessage error={errors.password} visible={touched.password} />
-                <AppButton title="Login" onPress={handleSubmit}/>
+                <AppButton title="Login" onPress={() => navigation.navigate("Factors")}/>
               </>
             )}
            </Formik>   

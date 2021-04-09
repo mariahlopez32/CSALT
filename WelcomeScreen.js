@@ -3,8 +3,9 @@ import { ImageBackground, StyleSheet, View , Text, Image,TouchableOpacity,Button
 
 import colors from './app/config/colors';
 import AppButton from './app/components/AppButton';
+import { NavigationContainer } from '@react-navigation/native';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
     return (
         
         <ImageBackground 
@@ -17,7 +18,7 @@ function WelcomeScreen(props) {
                 <Text style={styles.tagline}> Welcome to the Wellness{'\n'} App </Text>
             </View> 
             <View style={styles.buttonsContainer}>
-                <AppButton title="Login" />
+                <AppButton title="Login" onPress={() => navigation.navigate("Login")}/>
                 <AppButton title="Register" /> 
             </View>
             

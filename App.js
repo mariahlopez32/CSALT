@@ -4,14 +4,29 @@ import {  StyleSheet, Text, View, Button, Alert, ScrollView, SafeAreaView } from
 import LoginScreen from './LoginScreen';
 import WelcomeScreen from './WelcomeScreen';
 import Factors from './Factors';
-//npm install react-sidebar
-// import React from "react";
-// import { Router, Switch } from 'react-router';
+
+
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
+
+const Stack = createStackNavigator();
+
+
 export default function App(){
-  return  <Factors />;
-      
-   
- 
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false }}/>
+        <Stack.Screen 
+            name="Login" 
+            component={LoginScreen}  
+            options={{ headerTitle: false }}/>
+        <Stack.Screen name="Factors" component={Factors} options={{}} />   
+      </Stack.Navigator>
+    </NavigationContainer>
+
+  )
 }
 
  
