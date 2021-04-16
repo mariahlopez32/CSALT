@@ -12,7 +12,7 @@ import Circle from "./app/components/Circle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PieChart } from "react-native-svg-charts";
 import "react-native-svg";
-//import ToggleSwitch from "toggle-switch-react-native";
+//impotrt ToggleSwitch from "toggle-switch-react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -204,7 +204,7 @@ const Factors = ({ navigation }) => {
           <Slider
             style={{ width: 200, height: 80 }}
             minimumValue={0}
-            maximumValue={10}
+            maximumValue={4}
             minimumTrackTintColor="#1B9CFC"
             maximumTrackTintColor="#1e272e"
             value={sliderValue}
