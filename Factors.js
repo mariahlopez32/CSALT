@@ -26,8 +26,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   labelsContainer: {
-    width: 225,
+    width: 400,
+    justifyContent: "center",
     flexDirection: "row",
+    paddingBottom: "5%",
+    paddingTop: "0%",
   },
   labelUnwell: {
     flex: 1,
@@ -93,49 +96,49 @@ const socialFactors = [
     factor: "Financial",
     color: "#ffb142",
     statement:
-      "Unwell- I am struggling with finances and do not know how to build better financial habits.\n \nNeutral- I am okay with finances, but I want to build better spending/saving habits.\n \nWell- I have developed good spending/saving habits, and currently feel secure in my financial wellness.",
+      "(1) Unwell - I am struggling with finances and do not know how to build better financial habits. Every semester I run out of money with 4-5 weeks to go.\n\n(2) Somewhat Unwell – I struggle financially, often overspending one week and then having to make it up over the next 2 weeks. I never have a budget.\n\n(3) Neutral- I am okay with finances, but I want to build better spending/saving habits. I have a budget but am always having to take money out of savings every few weeks to cover credit card bills.\n\n(4) Somewhat Well – I have enough spending money so I can get food on the weekends and pay my bills. I wish I made more or had a better budget system. Grants and loans cover my tuition.\n\n(5) Well- I have developed good spending/saving habits, and currently feel secure in my financial wellness.",
   },
   {
     factor: "Environmental",
     color: "#6ab04c",
     statement:
-      "Uwell- I do not feel my environment supports my overall personal wellness. \n \nNeutral- Sometimes my environment supports my personal wellness and goals.\n \nWell- My environment supports my personal wellness and goals the majority of the time.",
+      "(1) Unwell - I do not feel my environment supports my overall personal wellness. I don’t feel well most of the time and have trouble sleeping and eat unhealthy foods at the dining hall. I don’t really feel safe.\n\n(2) Somewhat Unwell – I wake up feeling a little energetic, but it never lasts the whole day. My sleep is disrupted most nights and I eat too much junk food and then eat healthy for a day or two.\n \n(3) Neutral- Sometimes my environment supports my personal wellness and goals. I can get enough sleep but feel my allergies kick in. I don’t like the way my room looks. I feel safe except at night.\n\n(4) Somewhat Well – I have been able to adjust to my new room. I open the window 3 inches to get the temperature right for sleeping, but I still find myself cleaning up two days after the dishes get crusty at times.\n\n(5) Well- My environment supports my personal wellness and goals the majority of the time. I can get enough sleep and eat well with the occasional pizza splurge. I have made changes in my life to feel safe.",
   },
   {
     factor: "Social",
     color: "#ffb8b8",
     statement:
-      "Unwell- I have little to no friends and/or do not prioritize socializing.\n \nNeutral- I have a few close friends, but I am looking to expand my social circle and am not sure how to. \n \nWell- I have friends and prioritize being social to have a balanced personal wellness. ",
+      "(1) Unwell - I have little to no friends and/or do not prioritize socializing. \n \n(2) Somewhat Unwell – I have friends from High School but have not made any here. I just don’t know how to meet people.\n \n(3) Neutral- I have a few close friends, but I am looking to expand my social circle and am not sure how to do that at the university.\n\n(4) Somewhat Well – I have my close friends and some acquaintances that I hang out with on the weekends. We don’t do a lot so I joined a club on campus, thinking about joining a fraternity/sorority.\n\n(5) Well- I have supportive friends and prioritize spending time with them so I can have a balanced life. I spend time with my club, especially helping out during events. I am satisfied with my social life.",
   },
   {
     factor: "Physical",
     color: "#b33939",
     statement:
-      "Unwell- I am not satisfied with how I physically take care of my body via nutrition, exercise, and/or sleep.\n \nNeutral- I make efforts to physically care for myself via my nutrition, sleep, and/or exercise, but would like to learn more.\n \nWell- I am happy with how I maintain my physical wellness through a balance of nutrition, exercise, and sleep.",
+      "(1) Unwell - I am not satisfied with how I physically take care of my body via nutrition, exercise, and/or sleep. \n \n(2) Somewhat Unwell – I am not as bad as I have been in the past, but I often pass on physical activity to get academic work done.\n \n(3) Neutral- I make efforts to physically care for myself via my nutrition, sleep, and/or exercise, but would like to learn more.\n \n(4) Somewhat Well – I do fairly well with my sleep, nutrition and am working on more physical activity. \n \n(5) Well- I am happy with how I maintain my physical wellness through a balance of nutrition, exercise, and sleep, along with my academic work.",
   },
   {
     factor: "Intellectual",
     color: "#079992",
     statement:
-      "Unwell- I am struggling in my academics, but do not know where to start.\n \nNeutral- I do alright by my academics, but I feel I could be doing more or would like more resources. \n \nWell- I am happy with my academic performance and feel that my current study habits set me up for success. ",
+      "(1) Unwell - I am struggling in my academics, and do not know where to start. I am lost. \n \n(2) Somewhat Unwell – I seem to have a slow decline every semester. I start off well but then have difficulty understanding the professor and it snowballs so my anxiety escalates for finals. \n \n(3) Neutral- I do alright by my academics, but I feel I could be doing more. I pass my classes, but I keep getting in my own way. \n \n(4) Somewhat Well – I have a decent grade point average, one I can live with, but I don’t do anything extra. I still pull too many all-nighters. \n \n(5) Well- I am happy with my academic performance and feel that my current study habits set me up for success.",
   },
   {
     factor: "Emotional",
     color: "#c56cf0",
     statement:
-      "Unwell- I feel that my emotional wellness is struggling, and would like a better understanding of resources\n \nNeutral- My emotional wellness is okay, but I’d like to continue to grow.\n \nWell- I am emotionally well and am in touch with my own emotional needs and resources.",
+      "(1) Unwell - I feel that I am struggling emotionally. I would like a better understanding of my emotions so I can change their negative impact on my life. \n \n(2) Somewhat Unwell – I know I haven’t been in a good mood for quite a while, I have just been under so much stress. I do have better days, just not that many. \n \n(3) Neutral- My emotional wellness is okay but being content only sometimes is not enough. I’d like to continue to grow. \n \n(4) Somewhat Well – I feel pretty good about my life most days. I know others have it much tougher than I do, but I have hopes I can improve my mood. \n \n(5) Well- I am emotionally well and am in touch with my own emotional needs and resources that help me.",
   },
   {
     factor: "Spiritual",
     color: "#ffdd59",
     statement:
-      "Unwell- I am at odds with my spirituality, causing unrest.\n \nNeutral- I am somewhat or not spiritual but would like to learn more.\n\nWell- I am at peace with my spirituality and engage with resources to connect with my community.",
+      "(1) Unwell- I am at odds with my spirituality; I am not connected to my community and this is causing unrest. \n \n(2) Somewhat Unwell – I am struggling with making a connection to my community and my frustration has left me alone most of the time. \n \n(3) Neutral- I am not sure of my spirituality, but would like to learn more. I am connected to my community but it is not quite fulfilling. \n \n(4) Somewhat Well – I have made connections with my community and at times they are fulfilling, but my spirituality could improve. \n \n(5) Well- I am at peace with my spirituality and engage with resources to connect with my community.",
   },
   {
     factor: "Occupational",
     color: "#1e3799",
     statement:
-      "Unwell- I am not happy or fulfilled by my current position or my activities outside of work.\n \nNeutral- I like where I am at professionally, but I’d like to continue to grow in my outside activities. \n \nWell- I am fulfilled professionally and personally by my occupation and outside activities.",
+      "(1) Unwell - I am not happy or fulfilled by my current position or my activities outside of work. \n\n(2) Somewhat Unwell – I have a part-time job I hate that gives me a little spending money after I pay my bills, but it is never enough. I want to have something else to do but I don’t know what.\n\n(3) Neutral- I like where I am at academically, but I’d like to continue to do more in my major, like an internship; maybe do more in outside activities.\n\n(4) Somewhat Well – I am doing well academically and plan on a study abroad semester. I have a part-time job on campus that lets me save money and doesn’t interfere with my academics.\n\n(5) Well- I am right where I need to be academically and personally. I am enjoying my classes and outside activities like clubs, SGA, hobbies, groups.",
   },
 ];
 
@@ -202,7 +205,7 @@ const Factors = ({ navigation }) => {
 
         <View>
           <Slider
-            style={{ width: 200, height: 80 }}
+            style={{ width: 350, height: 80 }}
             minimumValue={0}
             maximumValue={4}
             minimumTrackTintColor="#1B9CFC"
@@ -213,15 +216,24 @@ const Factors = ({ navigation }) => {
           />
         </View>
         <View style={styles.labelsContainer}>
-          <View style={styles.labelUnwell}>
-            <Text>Unwell</Text>
+          <View>
+            <Text>1</Text>
+          </View>
+          <View style={{ paddingLeft: "19%" }}>
+            <Text>2</Text>
+          </View>
+          <View style={{ paddingLeft: "19%" }}>
+            <Text>3</Text>
+          </View>
+          <View style={{ paddingLeft: "19.1%", paddingRight: "19.1%" }}>
+            <Text>4</Text>
           </View>
           <View>
-            <Text>Well</Text>
+            <Text>5</Text>
           </View>
         </View>
         <View>
-          <Text style={{ paddingLeft: "8%", paddingRight: "8%" }}>
+          <Text style={{ paddingLeft: "10%", paddingRight: "10%" }}>
             {
               socialFactors.filter((item) => item.factor === selected)[0][
                 "statement"
