@@ -13,7 +13,7 @@ import LoginScreen from "./LoginScreen";
 import WelcomeScreen from "./WelcomeScreen";
 import Factors from "./Factors";
 import Resources from "./app/components/Resources";
-import Register from "./app/components/Register"
+import Register from "./app/components/Register";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
