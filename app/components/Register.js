@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import Screen from "../components/Screen";
+import axios from "axios";
 import AppTextInput from "./AppTextInput";
 import AppButton from'./AppButton';
 import ErrorMessage from './ErrorMessage';
@@ -14,20 +15,26 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Register({ navigation }) {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const [livesOnCampus, setLivesOnCampus] = useState(true);
+  const toggleLivesOnCampus = () => setLivesOnCampus((previousState) => !previousState);
   const handleLogin = () => {
     //call api with user/pass
     navigation.navigate("Login")
   }
-
+    const handleRegister = values => {
+      const payload = {...values, livesOnCampus}
+      axios.post("http://localhost:19009/CCSUWellness/Register", payload )
+        .then(response => {
+          console.log(response.data)
+        })
+    }
   return (
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require("../../assets/ccsu.png")} />
 
       <Formik
-            initialValues={{ email: '', password: ''}}
-            onSubmit={values => console.log(values)}
+            initialValues={{ email: '', password: '', fullName: ''}}
+            onSubmit={handleRegister}
             validationSchema={validationSchema}
            >
             {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
@@ -36,7 +43,9 @@ export default function Register({ navigation }) {
                   autoCorrect={false}
                   icon=""
                   placeholder="Full Name"
-                  textContentType="fullName"
+                  onChangeText={handleChange("fullName")}
+                  onBlur={() => setFieldTouched("fullName")}
+                  textContentType="name"
                 />
                 <AppTextInput
                     autoCapitalize="none"
@@ -61,19 +70,19 @@ export default function Register({ navigation }) {
                 />
                 
       <View style={styles.switch}>
-      <Text style={{ marginRight: 5 }}>on campus</Text>
+      <Text style={{ marginRight: 5 }}>off campus</Text>
       <Switch
         trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+        thumbColor={livesOnCampus ? "#f5dd4b" : "#f4f3f4"}
         ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
+        onValueChange={toggleLivesOnCampus}
+        value={livesOnCampus}
         alignSelf
       />
-      <Text style={{ marginLeft: 5 }}>off campus</Text>
+      <Text style={{ marginLeft: 5 }}>on campus</Text>
       </View>
               <ErrorMessage error={errors.password} visible={touched.password} />
-                  <AppButton title="Register" onPress={handleLogin}/>
+                  <AppButton title="Register" onPress={handleSubmit}/>
                   </>
               )}
     </Formik>  
