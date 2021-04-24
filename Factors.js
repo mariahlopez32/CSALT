@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   StyleSheet,
@@ -12,6 +12,7 @@ import Circle from "./app/components/Circle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PieChart } from "react-native-svg-charts";
 import "react-native-svg";
+import AppContext from './AppContext';
 //impotrt ToggleSwitch from "toggle-switch-react-native";
 
 const styles = StyleSheet.create({
@@ -154,7 +155,8 @@ const Factors = ({ navigation }) => {
       {}
     )
   );
-
+    const {user, token} = useContext(AppContext)
+    console.log(token)
   useEffect(() => {
     getData();
   }, []);
@@ -266,6 +268,7 @@ const Factors = ({ navigation }) => {
   } else {
     return (
       <View style={styles.container}>
+        <Text>Hi {user.fullName}</Text>
         {!selected && (
           <View style={styles.factorsContainer}>{factorsRow1}</View>
         )}

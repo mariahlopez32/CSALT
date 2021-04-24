@@ -16,11 +16,13 @@ import Resources from "./app/components/Resources";
 import Register from "./app/components/Register";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import {AppContextProvider} from "./AppContext";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    <AppContextProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen
@@ -38,6 +40,7 @@ export default function App() {
         <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
+    </AppContextProvider>
   );
 }
 

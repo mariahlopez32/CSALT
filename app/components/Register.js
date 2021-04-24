@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Switch, StyleSheet, Text, Image } from "react-native";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -8,6 +8,7 @@ import axios from "axios";
 import AppTextInput from "./AppTextInput";
 import AppButton from'./AppButton';
 import ErrorMessage from './ErrorMessage';
+import AppContext from '../../AppContext';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -16,16 +17,22 @@ const validationSchema = Yup.object().shape({
 
 export default function Register({ navigation }) {
   const [livesOnCampus, setLivesOnCampus] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+  const {setToken, setUser} = useContext(AppContext)
   const toggleLivesOnCampus = () => setLivesOnCampus((previousState) => !previousState);
-  const handleLogin = () => {
-    //call api with user/pass
-    navigation.navigate("Login")
-  }
+
+    
     const handleRegister = values => {
       const payload = {...values, livesOnCampus}
       axios.post("http://localhost:19009/CCSUWellness/Register", payload )
         .then(response => {
           console.log(response.data)
+          setToken(response.data.token)
+          setUser(response.data.user)
+          navigation.navigate("Factors")
+        })
+        .catch(err => {
+          setErrorMessage(err.response.data.message)
         })
     }
   return (
@@ -68,7 +75,7 @@ export default function Register({ navigation }) {
                     secureTextEntry
                     textContentType="password"
                 />
-                
+       <ErrorMessage error={errors.password} visible={touched.password} />         
       <View style={styles.switch}>
       <Text style={{ marginRight: 5 }}>off campus</Text>
       <Switch
@@ -81,7 +88,7 @@ export default function Register({ navigation }) {
       />
       <Text style={{ marginLeft: 5 }}>on campus</Text>
       </View>
-              <ErrorMessage error={errors.password} visible={touched.password} />
+                  <ErrorMessage error={errorMessage} visible={errorMessage} />
                   <AppButton title="Register" onPress={handleSubmit}/>
                   </>
               )}
