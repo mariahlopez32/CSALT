@@ -1,12 +1,14 @@
-import React from 'react';
+import React , {useState, useContext } from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import Screen from './app/components/Screen';
+import axios from "axios";
 import AppTextInput from './app/components/AppTextInput';
 import AppButton from'./app/components/AppButton';
 import ErrorMessage from './app/components/ErrorMessage';
+import AppContext from './AppContext'
 
 //being defined outside of function component so that this object is not redefined evertime the object is rerendered.
 const validationSchema = Yup.object().shape({
@@ -16,8 +18,20 @@ const validationSchema = Yup.object().shape({
 
 
 function LoginScreen({ navigation }) {
-    const handleLogin = () => {
+ const {setToken, setUser} = useContext(AppContext)
+
+    const handleLogin = values => {
+      const payload = {...values}
+      console.log('Values', payload)
+      axios.post("http://localhost:8080/CCSUWellness/Login", payload)
+        .then(response => {
+          setUser(response.data)
+        })
+        .catch(err => {
+          console.log('Error', err)
+        })
       //call api with user/pass
+
       navigation.navigate("Factors")
     }
     return (
@@ -27,7 +41,7 @@ function LoginScreen({ navigation }) {
            
            <Formik
             initialValues={{ email: '', password: ''}}
-            onSubmit={values => console.log(values)}
+            onSubmit={handleLogin} // bind the login funct
             validationSchema={validationSchema}
            >
             {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
@@ -55,7 +69,7 @@ function LoginScreen({ navigation }) {
                   textContentType="password"
               />
                 <ErrorMessage error={errors.password} visible={touched.password} />
-                <AppButton title="Login" onPress={handleLogin}/>
+                <AppButton title="Login" onPress={handleSubmit}/>
               </>
             )}
            </Formik>   

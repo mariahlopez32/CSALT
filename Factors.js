@@ -156,6 +156,7 @@ const Factors = ({ navigation }) => {
     )
   );
     const {user, token} = useContext(AppContext)
+    console.log('user', user)
     console.log(token)
   useEffect(() => {
     getData();
