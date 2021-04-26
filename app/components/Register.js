@@ -24,10 +24,10 @@ export default function Register({ navigation }) {
     
     const handleRegister = values => {
       const payload = {...values, livesOnCampus}
-      axios.post("http://localhost:8080/CCSUWellness/Register", payload )
+      axios.post("http://localhost:19009/CCSUWellness/Register", payload )
         .then(response => {
           setToken(response.data.token)
-          setUser(response.data)
+          setUser(response.data.user)
           navigation.navigate("Factors")
         })
         .catch(err => {

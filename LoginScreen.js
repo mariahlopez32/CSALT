@@ -19,20 +19,21 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen({ navigation }) {
  const {setToken, setUser} = useContext(AppContext)
+ const [errorMessage, setErrorMessage] = useState('');
 
     const handleLogin = values => {
       const payload = {...values}
       console.log('Values', payload)
-      axios.post("http://localhost:8080/CCSUWellness/Login", payload)
-        .then(response => {
-          setUser(response.data)
-        })
-        .catch(err => {
-          console.log('Error', err)
-        })
-      //call api with user/pass
-
-      navigation.navigate("Factors")
+      axios.post("http://localhost:19009/CCSUWellness/Login", payload)
+      .then(response => {
+        setToken(response.data.token)
+        setUser(response.data.user)
+        navigation.navigate("Factors")
+      })
+      .catch(err => {
+        setErrorMessage(err.response.data.message)
+      })
+     
     }
     return (
       
@@ -69,6 +70,7 @@ function LoginScreen({ navigation }) {
                   textContentType="password"
               />
                 <ErrorMessage error={errors.password} visible={touched.password} />
+                <ErrorMessage error={errorMessage} visible={errorMessage} />
                 <AppButton title="Login" onPress={handleSubmit}/>
               </>
             )}

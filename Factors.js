@@ -179,6 +179,15 @@ const Factors = ({ navigation }) => {
     }
   };
 
+  const handleSaveFactorResponse = async () => {
+    const payload = {
+      userId: user._id, 
+      factor: selected,
+      value: sliderValue,
+    }
+    console.log(payload)
+  }
+
   const storeData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value);
@@ -258,6 +267,7 @@ const Factors = ({ navigation }) => {
                   ...factorValues,
                   [selected]: sliderValue,
                 });
+                  handleSaveFactorResponse()
               }}
             >
               <Text style={styles.textStyle}>Submit</Text>
