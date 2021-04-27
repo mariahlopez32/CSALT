@@ -49,14 +49,25 @@ function Resources({ route }) {
             <Text
               style={{ color: "blue" }}
               onPress={() =>
-                Linking.openURL("https://www.youtube.com/watch?v=VPE9CqRUp54")
+                Linking.openURL("https://www.youtube.com/watch?v=VPE9CqRUp54"
+                )
               }
             >
               Sex, Dating and Relationships in College
             </Text>
           );
         } else if (wellnessFactor === "Physical") {
-          return <Text>no links</Text>;
+          return (
+          <Text
+            style={{color: "blue"}}
+            onPress={() =>
+              Linking.openURL(" https://www.youtube.com/watch?v=AEPnYII8uSI&list=PLwuUq0AkPoHQMEQYpHZLo81wh1GcpEZpM&index=21"
+              )
+            }
+          >
+            What is Physical Health?
+            </Text>
+          );
         } else if (wellnessFactor === "Intellectual") {
           return (
             <Text
