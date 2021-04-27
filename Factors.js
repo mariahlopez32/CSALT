@@ -6,6 +6,7 @@ import {
   Modal,
   Pressable,
   TouchableOpacity,
+  Button,
 } from "react-native";
 import Slider from "@react-native-community/slider";
 import Circle from "./app/components/Circle";
@@ -13,6 +14,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PieChart } from "react-native-svg-charts";
 import "react-native-svg";
 import AppContext from './AppContext';
+import login from './LoginScreen';
 //impotrt ToggleSwitch from "toggle-switch-react-native";
 
 const styles = StyleSheet.create({
@@ -63,6 +65,8 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
     marginBottom: 10,
+   
+    width: "100%"
   },
   buttonOpen: {
     backgroundColor: "#F194FF",
@@ -74,7 +78,15 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
+  }, 
+  textStyleLogout: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    padding: 20,
+    width: "100%",
   },
+
   modalText: {
     marginBottom: 15,
     textAlign: "center",
@@ -294,6 +306,15 @@ const Factors = ({ navigation }) => {
         >
           <Text style={styles.textStyle}>See Resources</Text>
         </Pressable>
+        <Pressable
+          style={[styles.button, styles.buttonClose]}
+          onPress={() =>
+            navigation.navigate("Login")
+          }
+        >
+          <Text style={styles.textStyle}>Logout</Text>
+        </Pressable>
+        
 
         <View style={{ height: 200 }}>
           <PieChart
