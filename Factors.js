@@ -62,11 +62,13 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 20,
-    padding: 10,
+    padding: 20,
     elevation: 2,
     marginBottom: 10,
+    marginTop:20,
+  
    
-    width: "100%"
+    width: "90%"
   },
   buttonOpen: {
     backgroundColor: "#F194FF",
@@ -306,7 +308,7 @@ const Factors = ({ navigation }) => {
         >
           <Text style={styles.textStyle}>See Resources</Text>
         </Pressable>
-        <Pressable
+        <Pressable 
           style={[styles.button, styles.buttonClose]}
           onPress={() =>
             navigation.navigate("Login")
