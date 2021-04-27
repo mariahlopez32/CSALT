@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Button,
 } from "react-native";
+import AppButton from "./app/components/AppButton";
 import Slider from "@react-native-community/slider";
 import Circle from "./app/components/Circle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -103,6 +104,11 @@ const styles = StyleSheet.create({
   },
   circleText: {
     alignSelf: "center",
+  },
+  buttonsContainer: {
+    padding: 20,
+    width: "100%",
+    
   },
 });
 
@@ -300,7 +306,7 @@ const Factors = ({ navigation }) => {
         {!selected && (
           <View style={styles.factorsContainer}>{factorsRow2}</View>
         )}
-        <Pressable
+        {/* <Pressable
           style={[styles.button, styles.buttonClose]}
           onPress={() =>
             navigation.navigate("Resources", { factorValue: factorValues })
@@ -315,7 +321,15 @@ const Factors = ({ navigation }) => {
           }
         >
           <Text style={styles.textStyle}>Logout</Text>
-        </Pressable>
+        </Pressable> */}
+        <AppButton style={styles.buttonsContainer}
+          title="View Resources"
+          onPress={() => navigation.navigate("Resources", { factorValue: factorValues })}
+        />
+        <AppButton style={styles.buttonsContainer}
+          title="Logout"
+          onPress={() => navigation.navigate("Login")}
+        />
         
 
         <View style={{ height: 200 }}>
