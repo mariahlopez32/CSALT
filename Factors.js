@@ -16,6 +16,8 @@ import { PieChart } from "react-native-svg-charts";
 import "react-native-svg";
 import AppContext from './AppContext';
 import login from './LoginScreen';
+import axios from "axios";
+import ErrorMessage from './app/components/ErrorMessage';
 //impotrt ToggleSwitch from "toggle-switch-react-native";
 
 const styles = StyleSheet.create({
@@ -199,6 +201,10 @@ const Factors = ({ navigation }) => {
     }
   };
 
+
+  //const {setToken, setUser} = useContext(AppContext)
+  //const [setErrorMessage] = useState('');
+  //sending the factors to database
   const handleSaveFactorResponse = async () => {
     const payload = {
       userId: user._id, 
@@ -206,8 +212,17 @@ const Factors = ({ navigation }) => {
       value: sliderValue,
     }
     console.log(payload)
+    axios.post("http://localhost:19009/CCSUWellness/Login", payload)
+    .then(response => {
+      setUserId(response.data.userId)
+      setFactor(response.data.factor)
+      setValues(response.data.value)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
-
+// what I have between the code is not working
   const storeData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value);
@@ -287,6 +302,7 @@ const Factors = ({ navigation }) => {
                   ...factorValues,
                   [selected]: sliderValue,
                 });
+                  //what I added, not working
                   handleSaveFactorResponse()
               }}
             >

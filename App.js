@@ -12,11 +12,14 @@ import {
 import LoginScreen from "./LoginScreen";
 import WelcomeScreen from "./WelcomeScreen";
 import Factors from "./Factors";
+import AdminScreen from "./AdminScreen";
 import Resources from "./app/components/Resources";
 import Register from "./app/components/Register";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import {AppContextProvider} from "./AppContext";
+import { SafeAreaFrameContext } from "react-native-safe-area-context";
+
 
 const Stack = createStackNavigator();
 
@@ -38,6 +41,7 @@ export default function App() {
         <Stack.Screen name="Factors" component={Factors} options={{}} />
         <Stack.Screen name="Resources" component={Resources} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Admin" component= {AdminScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     </AppContextProvider>

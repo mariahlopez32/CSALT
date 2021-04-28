@@ -9,6 +9,7 @@ import AppTextInput from './app/components/AppTextInput';
 import AppButton from'./app/components/AppButton';
 import ErrorMessage from './app/components/ErrorMessage';
 import AppContext from './AppContext'
+import { isValidElement } from 'react';
 
 //being defined outside of function component so that this object is not redefined evertime the object is rerendered.
 const validationSchema = Yup.object().shape({
@@ -28,10 +29,24 @@ function LoginScreen({ navigation }) {
       .then(response => {
         setToken(response.data.token)
         setUser(response.data.user)
-        navigation.navigate("Factors")
+        console.log(response.data.user)
+        let isAdmin = response.data.user.isAdmin
+        if(isAdmin){
+          //console.log('we made it`')
+          navigation.navigate("Admin")
+        }
+        else{
+          navigation.navigate("Factors")
+        }
+        
       })
       .catch(err => {
-        setErrorMessage(err.response.data.message)
+        if(err.response?.data?.message){
+          setErrorMessage(err.response.data.message)
+        }
+        else{
+          setErrorMessage(err)
+        }
       })
      
     }
