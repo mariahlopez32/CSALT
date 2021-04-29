@@ -8,7 +8,8 @@ import axios from "axios";
 import AppTextInput from './app/components/AppTextInput';
 import AppButton from'./app/components/AppButton';
 import ErrorMessage from './app/components/ErrorMessage';
-import AppContext from './AppContext'
+import AppContext from './AppContext';
+import Factors from './Factors';
 
 //being defined outside of function component so that this object is not redefined evertime the object is rerendered.
 const validationSchema = Yup.object().shape({
