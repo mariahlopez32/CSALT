@@ -212,7 +212,7 @@ const Factors = ({ navigation }) => {
       value: sliderValue,
     }
     console.log(payload)
-    axios.post("http://localhost:19009/CCSUWellness/Login", payload)
+    axios.post("http://localhost:19009/CCSUWellness/FactorResponse", payload)
     .then(response => {
       setUserId(response.data.userId)
       setFactor(response.data.factor)
