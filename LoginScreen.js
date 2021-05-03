@@ -8,13 +8,9 @@ import axios from "axios";
 import AppTextInput from './app/components/AppTextInput';
 import AppButton from'./app/components/AppButton';
 import ErrorMessage from './app/components/ErrorMessage';
-<<<<<<< HEAD
 import AppContext from './AppContext';
 import Factors from './Factors';
-=======
-import AppContext from './AppContext'
 import { isValidElement } from 'react';
->>>>>>> 130b7c4555e9348faa09f75c6ad54046fb4d5cc5
 
 //being defined outside of function component so that this object is not redefined evertime the object is rerendered.
 const validationSchema = Yup.object().shape({
@@ -30,7 +26,9 @@ function LoginScreen({ navigation }) {
     const handleLogin = values => {
       const payload = {...values}
       console.log('Values', payload)
-      axios.post("http://localhost:19009/CCSUWellness/Login", payload)
+      //10.0.2.2 is the gateway ip address for the emulator to access the host machine
+      //the web 127.0.0.1 is the ip address of the host machine
+      axios.post("http://10.0.2.2:19002/CCSUWellness/Login", payload)
       .then(response => {
         setToken(response.data.token)
         setUser(response.data.user)
@@ -45,14 +43,15 @@ function LoginScreen({ navigation }) {
         }
         
       })
-      .catch(err => {
-        if(err.response?.data?.message){
+      .catch((err) => {
+          if(err.response?.data?.message){
           setErrorMessage(err.response.data.message)
-        }
-        else{
-          setErrorMessage(err)
-        }
-      })
+         }
+          else{
+           setErrorMessage(err)
+          }
+    
+        })
      
     }
     return (

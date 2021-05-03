@@ -22,9 +22,9 @@ import ErrorMessage from './app/components/ErrorMessage';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
     alignItems: "center",
-    paddingTop: "6%",
+    //paddingTop: "6%",
   },
   factorsContainer: {
     flexDirection: "row",
@@ -212,7 +212,7 @@ const Factors = ({ navigation }) => {
       value: sliderValue,
     }
     console.log(payload)
-    axios.post("http://localhost:19009/CCSUWellness/FactorResponse", payload)
+    axios.post("http://10.0.2.2:19002/CCSUWellness/FactorResponse", payload)
     .then(response => {
       setUserId(response.data.userId)
       setFactor(response.data.factor)
@@ -253,8 +253,8 @@ const Factors = ({ navigation }) => {
         <View>
           <Slider
             style={{ width: 350, height: 80 }}
-            minimumValue={0}
-            maximumValue={4}
+            minimumValue={1}
+            maximumValue={5}
             minimumTrackTintColor="#1B9CFC"
             maximumTrackTintColor="#1e272e"
             value={sliderValue}
@@ -302,7 +302,7 @@ const Factors = ({ navigation }) => {
                   ...factorValues,
                   [selected]: sliderValue,
                 });
-                  //what I added, not working
+                 
                   handleSaveFactorResponse()
               }}
             >
@@ -344,7 +344,7 @@ const Factors = ({ navigation }) => {
         />
         <AppButton style={styles.buttonsContainer}
           title="Logout"
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("Welcome")}
         />
         
 

@@ -9,7 +9,7 @@ export const AppContextProvider = (props) => {
         token, 
         setToken,
         user,
-        setUser
+        setUser,
     }
     return (
         <AppContext.Provider value = {context}>{props.children}</AppContext.Provider>

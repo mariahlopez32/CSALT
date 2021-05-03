@@ -11,8 +11,9 @@ import {
 function Circle({ factor, color, onPress }) {
   const styles = StyleSheet.create({
     circleShape: {
-      width: 150,
-      height: 150,
+      width: 130,
+      height: 130,
+      marginRight: 5,
       borderRadius: 75,
       backgroundColor: color,
       justifyContent: "center",
