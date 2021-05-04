@@ -10,8 +10,9 @@ import {
   SafeAreaView,
   Button,
   Image,
+  ScrollView
 } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+
 
 // import ExternalLink from './ExternalLink';
 // import { Video, AVPlaybackStatus } from 'expo-av';
@@ -33,7 +34,7 @@ function Resources({ route }) {
         
           return (
             
-            <View style={styles.Financialbackground}>
+            <View key={wellnessFactor} style={styles.Financialbackground}>
             <Text style={styles.header}>Financial</Text>
             <Text style={styles.description}>The ability to maintain wellness through the availability to monetary goods.  Financial wellness is a balance of the mental, spiritual and physical aspects of money.   </Text>
             <Text style={styles.option}>Here Are Some Videos: </Text>
@@ -87,7 +88,7 @@ function Resources({ route }) {
         } else if (wellnessFactor === "Environmental") {
           return (
             
-            <View style={styles.Enviornmentalbackground}>
+            <View key={wellnessFactor} style={styles.Enviornmentalbackground}>
             <Text style={styles.header}>Environmental</Text>
             <Text style={styles.description}>The willingness to recognize our ability to make a positive impact on the quality of our environment, be it our homes, our communities or our planet.  Environmental wellness relies on having safety and security within the environment.  </Text>
             <Text style={styles.option}>Here Are Some Vdeos:</Text>
@@ -166,7 +167,7 @@ function Resources({ route }) {
         } else if (wellnessFactor === "Social") {
           return (
             
-            <View style={styles.Socialbackground}>
+            <View key={wellnessFactor} style={styles.Socialbackground}>
             <Text style={styles.header}>Social</Text>
             <Text style={styles.description}>The ability to relate to and connect with other people.  It is the ability to establish and maintain positive relationships with family, friends and co-workers. </Text>
             <Text style={styles.option}>Here are some videos:</Text>
@@ -204,7 +205,7 @@ function Resources({ route }) {
         } else if (wellnessFactor === "Physical") {
           return (
          
-          <View style={styles.Physicalbackground}>
+          <View key={wellnessFactor} style={styles.Physicalbackground}>
           <Text style={styles.header}>Physical</Text>
           <Text style={styles.description}>The ability to maintain a healthy quality of life that allows for engaging in daily activities without undue fatigue or physical stress.  It is the ability to recognize that behaviors have a significant impact on wellness, and to adopt healthful habits while avoiding destructive behaviors.  </Text>
           <Text style={styles.option}>Here are some videos:</Text>
@@ -259,7 +260,7 @@ function Resources({ route }) {
         } else if (wellnessFactor === "Intellectual") {
           return (
             
-          <View style={styles.Intellectualbackground}>
+          <View key={wellnessFactor} style={styles.Intellectualbackground}>
           <Text style={styles.header}>Intellectual</Text>
           <Text style={styles.description}>The ability to open our minds to new ideas and experiences that can be applied to personal decisions, group interaction and community improvement.  It is the desire to learn new concepts, improve skills and seek challenges in pursuit of lifelong learning.  </Text>
           <Text style={styles.option}>Here Are Some Videos:</Text>
@@ -334,7 +335,7 @@ function Resources({ route }) {
           );
         } else if (wellnessFactor === "Emotional") {
           return (
-          <View style={styles.Emotionalbackground}>
+          <View key={wellnessFactor} style={styles.Emotionalbackground}>
           <Text style={styles.header}>Emotional</Text>
           <Text style={styles.description}>The ability to cope with the challenges of life.  The ability to acknowledge and share feelings of anger, fear, sadness, or stress, as well as hope, love, joy and happiness in a productive manner. </Text>
           <Text style={styles.option}>Here Are Some Videos:</Text> 
@@ -434,7 +435,7 @@ function Resources({ route }) {
           );
         } else if (wellnessFactor === "Spiritual") {
           return (
-          <View style={styles.Spiritualbackground}>
+          <View key={wellnessFactor} style={styles.Spiritualbackground}>
           <Text style={styles.header}>Spiritual</Text>
           <Text style={styles.description}>The ability to establish peace and harmony in our own lives.  There exists congruency between values and actions, and a realization of purpose.  </Text>
           <Text style={styles.option}>Here Are Some Videos:</Text>
@@ -481,7 +482,7 @@ function Resources({ route }) {
           );
         } else if (wellnessFactor === "Occupational") {
           return (
-          <View style={styles.Occupationalbackground}>
+          <View key={wellnessFactor} style={styles.Occupationalbackground}>
           <Text style={styles.header}>Occupational</Text>
           <Text style={styles.description}>To have personal fulfillment from our jobs or our endeavors while still maintaining balance in our lives.  It is a desire to attribute meaning to our endeavors, making a positive impact on the organizations we engage in.  </Text>
           <Text style={styles.option}>Here Are Some Videos:</Text>
@@ -540,7 +541,7 @@ function Resources({ route }) {
   };
 
   return (
-    <View>
+    <ScrollView>
       {/* <Text>Resources</Text> */}
       {/* <Text>{JSON.stringify(factorValue)}</Text> */}
       <View style={styles.Occupationalbackground}>
@@ -576,7 +577,7 @@ function Resources({ route }) {
             </Text>
             </View>
       {showValues()}
-    </View>
+    </ScrollView>
    
   );
   

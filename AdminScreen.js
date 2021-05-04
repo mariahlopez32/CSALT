@@ -48,26 +48,45 @@ const AdminScreen = () => {
           <BarChart 
             data={chartData}
             width={Dimensions.get("window").width} // from react-native
-            height={300}
+            height={500}
     //yAxisLabel={'value'}
-    verticalLabelRotation={35}
+    verticalLabelRotation={90}
     contentInset={{top:0, bottom:0, left:0, right:0}}
     absolute
     chartConfig={{
-      backgroundColor: "#1cc910",
-      backgroundGradientFrom: "#eff3ff",
+      backgroundColor: "#0837c4",
+      backgroundGradientFrom: "#A7C7E7",
       backgroundGradientTo: "#efefef",
       decimalPlaces: 0, // optional, defaults to 2dp
       color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-      //labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`, COMMENT
-    //   style: { COMMENT
-    //     borderRadius: 16 COMMENT
-    //   },
+      fillShadowGradient: 'blue',
+      fillShadowGradientOpacity:8,
+//     backgroundGradientFrom: "#1E2923",
+//   backgroundGradientFromOpacity: 0,
+//   backgroundGradientTo: "#08130D",
+//   backgroundGradientToOpacity: 0.5,
+  //color: (opacity = 3) => `rgba(26, 255, 146, ${opacity})`,
+//   strokeWidth: 2, // optional, default 3
+   barPercentage: 0.5,
+
+   //useShadowColorFromDataset: false,
+      
+      propsForVerticalLabels: {
+          //x: 5,
+          textAnchor: "start"
+          
+      }
+    //   labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    //     style: { 
+    //     borderRadius: 16,
+    //     marginLeft: 100 
+    //    },
     }} DO NOT COMMENT THIS LINE
-    // style={{ COMMENT
-    //   marginVertical: 8, COMMENT
-    //   borderRadius: 16 COMMENT
-    // }} COMMENT UP TO HERE
+    style={{ 
+      //marginVertical: 8, 
+     // borderRadius: 16,
+      //marginLeft: -2
+    }} 
   />
       </View>
 
@@ -84,8 +103,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginVertical: 8,
         marginTop: 40,
-        marginRight: 50
-        
+        //marginRight: 50,
+        //borderWidth: 3,
 
     },
     

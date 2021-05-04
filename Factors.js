@@ -235,7 +235,7 @@ const Factors = ({ navigation }) => {
   const showFactors = () => {
     return socialFactors.map((socialFactor) => {
       const { factor, color } = socialFactor;
-      return <Circle factor={factor} color={color} onPress={setSelected} />;
+      return <Circle key={factor} factor={factor} color={color} onPress={setSelected} />;
     });
   };
   const factorsRow2 = showFactors();
