@@ -16,6 +16,7 @@ import Factors from "./Factors";
 import Resources from "./app/components/Resources";
 import Register from "./app/components/Register";
 import AdminScreen from "./AdminScreen";
+import SurveyResults from "./surveyResults";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import {AppContextProvider} from "./AppContext";
@@ -40,10 +41,10 @@ export default function App() {
           component={LoginScreen}
           options={{ headerTitle: false }}
         />
-        <Stack.Screen name="Factors" component={Factors} options={{}} />
+        <Stack.Screen name="Factors" component={Factors} options={{ headerShown: false}} />
         <Stack.Screen name="Resources" component={Resources} />
-        
-        <Stack.Screen name="Admin" component= {AdminScreen} />
+        <Stack.Screen name="Admin" component= {AdminScreen} options={{ headerShown: false}} />
+        <Stack.Screen name="Survey Results" component={SurveyResults} />
       </Stack.Navigator>
     </AppContextProvider>
     </NavigationContainer>

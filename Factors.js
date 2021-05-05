@@ -14,17 +14,15 @@ import Circle from "./app/components/Circle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PieChart } from "react-native-svg-charts";
 import "react-native-svg";
-import AppContext from './AppContext';
-import login from './LoginScreen';
+import AppContext from "./AppContext";
+import login from "./LoginScreen";
 import axios from "axios";
-import ErrorMessage from './app/components/ErrorMessage';
-//impotrt ToggleSwitch from "toggle-switch-react-native";
+import ErrorMessage from "./app/components/ErrorMessage";
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
     alignItems: "center",
-    //paddingTop: "6%",
+    paddingTop: "13%",
   },
   factorsContainer: {
     flexDirection: "row",
@@ -48,30 +46,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
   button: {
     borderRadius: 20,
     padding: 20,
     elevation: 2,
     marginBottom: 10,
-    marginTop:20,
-  
-   
-    width: "90%"
+
+    width: 90,
   },
   buttonOpen: {
     backgroundColor: "#F194FF",
@@ -83,18 +64,13 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
-  }, 
+  },
   textStyleLogout: {
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
     padding: 20,
     width: "100%",
-  },
-
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
   },
   circleShape: {
     width: 150,
@@ -110,7 +86,10 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     padding: 20,
     width: "100%",
-    
+  },
+  header: {
+    fontSize: 20,
+    paddingBottom: 10,
   },
 });
 
@@ -166,6 +145,7 @@ const socialFactors = [
 ];
 
 const Factors = ({ navigation }) => {
+  const { user, token } = useContext(AppContext);
   const [selected, setSelected] = useState("");
   const [sliderValue, setSliderValue] = useState(5);
   const [factorValues, setFactorValues] = useState(
@@ -177,12 +157,9 @@ const Factors = ({ navigation }) => {
       {}
     )
   );
-    const {user, token} = useContext(AppContext)
-    console.log('user', user)
-    console.log(token)
-  useEffect(() => {
-    getData();
-  }, []);
+
+  console.log("user", user);
+  console.log(token);
 
   useEffect(() => {
     if (selected) {
@@ -190,52 +167,34 @@ const Factors = ({ navigation }) => {
     }
   }, [selected]);
 
-  const getData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem("factorValues");
-      if (jsonValue != null) {
-        setFactorValues(JSON.parse(jsonValue));
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-
-  //const {setToken, setUser} = useContext(AppContext)
-  //const [setErrorMessage] = useState('');
   //sending the factors to database
   const handleSaveFactorResponse = async () => {
     const payload = {
-      userId: user._id, 
+      userId: user._id,
       factor: selected,
       value: sliderValue,
-    }
-    console.log(payload)
-    axios.post("http://10.0.2.2:19002/CCSUWellness/FactorResponse", payload)
-    .then(response => {
-      setUserId(response.data.userId)
-      setFactor(response.data.factor)
-      setValues(response.data.value)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
-// what I have between the code is not working
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem("factorValues", jsonValue);
-    } catch (e) {
-      console.log(e);
-    }
+    };
+    console.log(payload);
+    axios.post("http://127.0.0.1:19002/CCSUWellness/FactorResponse", payload)
+      .then((response) => {
+        console.log(response.data.success);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const showFactors = () => {
     return socialFactors.map((socialFactor) => {
       const { factor, color } = socialFactor;
-      return <Circle key={factor} factor={factor} color={color} onPress={setSelected} />;
+      return (
+        <Circle
+          key={factor}
+          factor={factor}
+          color={color}
+          onPress={setSelected}
+        />
+      );
     });
   };
   const factorsRow2 = showFactors();
@@ -289,25 +248,20 @@ const Factors = ({ navigation }) => {
           </Text>
         </View>
         <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
+          <View>
+            <AppButton
+              title="submit"
               onPress={() => {
                 setFactorValues({
                   ...factorValues,
                   [selected]: sliderValue,
                 });
                 setSelected("");
-                storeData({
-                  ...factorValues,
-                  [selected]: sliderValue,
-                });
-                 
-                  handleSaveFactorResponse()
+
+                handleSaveFactorResponse();
               }}
-            >
-              <Text style={styles.textStyle}>Submit</Text>
-            </Pressable>
+            />
+            <Text style={styles.textStyle}>Submit</Text>
           </View>
         </View>
       </View>
@@ -315,38 +269,26 @@ const Factors = ({ navigation }) => {
   } else {
     return (
       <View style={styles.container}>
-        <Text>Hi {user.fullName}</Text>
+        <Text style={styles.header}>Hi {user.fullName}</Text>
         {!selected && (
           <View style={styles.factorsContainer}>{factorsRow1}</View>
         )}
         {!selected && (
           <View style={styles.factorsContainer}>{factorsRow2}</View>
         )}
-        {/* <Pressable
-          style={[styles.button, styles.buttonClose]}
+
+        <AppButton
+          style={styles.buttonsContainer}
+          title="Results"
           onPress={() =>
-            navigation.navigate("Resources", { factorValue: factorValues })
+            navigation.navigate("Survey Results", { factorValue: factorValues })
           }
-        >
-          <Text style={styles.textStyle}>See Resources</Text>
-        </Pressable>
-        <Pressable 
-          style={[styles.button, styles.buttonClose]}
-          onPress={() =>
-            navigation.navigate("Login")
-          }
-        >
-          <Text style={styles.textStyle}>Logout</Text>
-        </Pressable> */}
-        <AppButton style={styles.buttonsContainer}
-          title="View Resources"
-          onPress={() => navigation.navigate("Resources", { factorValue: factorValues })}
         />
-        <AppButton style={styles.buttonsContainer}
+        <AppButton
+          style={styles.buttonsContainer}
           title="Logout"
           onPress={() => navigation.navigate("Welcome")}
         />
-        
 
         <View style={{ height: 200 }}>
           <PieChart

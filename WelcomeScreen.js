@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     justifyContent: "flex-end",
     alignItems: "center",
-    //backgroundColor:'white',
   },
   buttonsContainer: {
     padding: 20,

@@ -83,7 +83,6 @@ export default function Register({ navigation }) {
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleLivesOnCampus}
                 value={livesOnCampus}
-                //alignSelf
               />
               <Text style={{ marginLeft: 5 }}>on campus</Text>
             </View>
